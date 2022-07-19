@@ -1,0 +1,8 @@
+body {
+    margin: 20px
+}
+
+div#auto {
+    display: flex;
+    justify-content: space-evenly;
+}
