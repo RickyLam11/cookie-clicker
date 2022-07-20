@@ -10,6 +10,13 @@ function updateGui(id = "") {
         case 'clickPower':
             updateClickPower()
             break;
+		case 'maxBuy':
+            cursorLv1.updateGuiMaxBuy()
+            cursorLv2.updateGuiMaxBuy()
+            cursorLv3.updateGuiMaxBuy()
+            cursorLv4.updateGuiMaxBuy()
+            cursorLv5.updateGuiMaxBuy()
+            break;
         default:
             updateCookie()
             updateCookieRate()
@@ -20,6 +27,12 @@ function updateGui(id = "") {
             cursorLv3.updateGui()
             cursorLv4.updateGui()
             cursorLv5.updateGui()
+            
+            cursorLv1.updateGuiMaxBuy()
+            cursorLv2.updateGuiMaxBuy()
+            cursorLv3.updateGuiMaxBuy()
+            cursorLv4.updateGuiMaxBuy()
+            cursorLv5.updateGuiMaxBuy()
 
     }
     return true

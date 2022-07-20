@@ -6,8 +6,9 @@ class Cursor {
     costCoefficient;
     amountTextId;
     costTextId;
+    maxBuyTextId;
 
-    constructor(power, interval, costBase, costCoefficient, amountTextId, costTextId) {
+    constructor(power, interval, costBase, costCoefficient, amountTextId, costTextId, maxBuyTextId) {
         this.amount = 0
         this.power = power;
         this.interval = interval;
@@ -18,6 +19,8 @@ class Cursor {
         this.amountTextElement = document.getElementById(this.amountTextId);
         this.costTextId = costTextId;
         this.costTextElement = document.getElementById(this.costTextId);
+        this.maxBuyTextId = maxBuyTextId;
+        this.maxBuyTextElement = document.getElementById(this.maxBuyTextId);
 
         // main game loop
         setInterval(function() {
@@ -27,26 +30,51 @@ class Cursor {
     }
 
     cursorCost(n) {
-        return Math.round(this.costBase * Math.pow(this.costCoefficient, n));
+    	if (n === 1) {
+    		return Math.round(
+        		this.costBase * Math.pow(this.costCoefficient, this.amount)
+        	)
+    	}
+        return Math.round(
+        	this.costBase * Math.pow(this.costCoefficient, this.amount) * 
+        	(Math.pow(this.costCoefficient, n) - 1) / (this.costCoefficient - 1)
+        );
     }
 
-    buyCursor() {
-        let cost = this.cursorCost(this.amount);
-        if (cookie >= cost)
-        {
-            this.amount = this.amount + 1;
+    buyCursor(n) {
+        let cost = this.cursorCost(n);
+        console.log()
+        if (cookie >= cost) {
+            this.amount = this.amount + n;
             cookie = cookie - cost;
             this.amountTextElement.innerHTML = this.amount;
             updateGui("cookie");
             updateGui("cookieRate");
-        };
-        let nextCost = this.cursorCost(this.amount);
+        }
+        let nextCost = this.cursorCost(1);
         this.costTextElement.innerHTML = nextCost;
+    }
+
+    buyMaxCursor() {
+    	this.buyCursor(this.getMaxBuy())
+    }
+
+    getMaxBuy() {
+		let n = cookie
+		n *= (this.costCoefficient - 1)
+		n /= this.costBase * Math.pow(this.costCoefficient, this.amount)
+    	return Math.floor(
+    		getBaseLog(this.costCoefficient, n + 1)
+    	)
     }
 
     updateGui() {
         this.amountTextElement.innerHTML = this.amount;
-        this.costTextElement.innerHTML = this.cursorCost(this.amount);
+        this.costTextElement.innerHTML = this.cursorCost(1);
+    }
+
+    updateGuiMaxBuy() {
+        this.maxBuyTextElement.innerHTML = this.getMaxBuy();
     }
 
     getCookieRate() {

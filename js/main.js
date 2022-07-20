@@ -3,11 +3,11 @@ let cookie = 0,
     clickPower = 1,
     prestige = 0
 
-const cursorLv1 = new Cursor(1, 0.6, 4, 1.07, 'cursorLv1', 'cursorLv1Cost')
-const cursorLv2 = new Cursor(60, 3, 60, 1.15, 'cursorLv2', 'cursorLv2Cost')
-const cursorLv3 = new Cursor(540, 6, 720, 1.14, 'cursorLv3', 'cursorLv3Cost')
-const cursorLv4 = new Cursor(4320, 12, 8640, 1.13, 'cursorLv4', 'cursorLv4Cost')
-const cursorLv5 = new Cursor(51840, 24, 103680, 1.12, 'cursorLv5', 'cursorLv5Cost')
+const cursorLv1 = new Cursor(1, 0.6, 4, 1.07, 'cursorLv1', 'cursorLv1Cost', 'cursorLv1MaxBuy')
+const cursorLv2 = new Cursor(60, 3, 60, 1.15, 'cursorLv2', 'cursorLv2Cost', 'cursorLv2MaxBuy')
+const cursorLv3 = new Cursor(540, 6, 720, 1.14, 'cursorLv3', 'cursorLv3Cost', 'cursorLv3MaxBuy')
+const cursorLv4 = new Cursor(4320, 12, 8640, 1.13, 'cursorLv4', 'cursorLv4Cost', 'cursorLv4MaxBuy')
+const cursorLv5 = new Cursor(51840, 24, 103680, 1.12, 'cursorLv5', 'cursorLv5Cost', 'cursorLv5MaxBuy')
 
 updateGui()
 
@@ -16,6 +16,7 @@ function cookieClick(n) {
     // console.log('cookieClick:' + n)
     cookie = cookie + n
     updateGui("cookie")
+    updateGui("maxBuy")
 }
 
 function clickPowerCost(n) {

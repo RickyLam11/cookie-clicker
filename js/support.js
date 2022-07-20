@@ -22,3 +22,7 @@ function storageAvailable(type) {
             (storage && storage.length !== 0);
     }
 }
+
+function getBaseLog(x, y) {
+    return Math.log(y) / Math.log(x);
+}
