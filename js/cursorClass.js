@@ -24,8 +24,10 @@ class Cursor {
 
         // main game loop
         setInterval(function() {
-            console.log('Click from :' + this.amountTextId + ' (' + this.amount + ')')
-            cookieClick(this.amount * this.power);
+            // console.log('Click from :' + this.amountTextId + ' (' + this.amount + ')')
+            if (0 < this.amount) {
+            	cookieClick(this.amount * this.power);
+            }
         }.bind(this), 1000 * this.interval);
     }
 
