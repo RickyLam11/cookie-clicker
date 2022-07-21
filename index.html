@@ -11,16 +11,19 @@
     <script type="text/javascript" src="./js/loadScript.js" async></script>
 </head>
 <body onload="load()">
-    <p>Simple Cookie Clicker</p>
-    <p>Current Cookies: <span id="cookie">0</span></p>
-    <p>Auto Cookie Rate: <span id="cookieRate">0</span>/s</p>
-    <button onClick="cookieClick(clickPower)">Click</button>
-    <br />
+    <div id="">
+        <h1>Simple Cookie Clicker</h1>
+        <h2>Current Cookies: <span id="cookie">0</span></h2>
+        <p>Auto Cookie Rate: <span id="cookieRate">0</span>/s</p>
+        <button onClick="cookieClick(clickPower)">Click</button>
+        <br />
 
-    <p>Click Power: <span id="clickPower">1</span></p>
-    <p>Cost: <span id="clickPowerCost">20</span></p>
-    <button onClick="buyClickPower()">Increase Click Power</button>
-    <br />
+        <p>Click Power: <span id="clickPower">1</span></p>
+        <p>Cost: <span id="clickPowerCost">20</span></p>
+        <button onClick="buyClickPower()">Increase Click Power</button>
+    </div>
+    <hr />
+
 
     <div id="auto">
         <div>
@@ -64,12 +67,11 @@
             <button onClick="cursorLv5.buyMaxCursor()">Buy Max Cursors (<span id="cursorLv5MaxBuy">N/A</span>)</button>
         </div>
     </div>
-    <br />
-
-    
     <hr />
-    <button onClick="save()">Save</button>
-    <button onClick="clearSave()">Clear Save</button>
-
+    
+    <div id="save">
+        <button onClick="save()">Save</button>
+        <button onClick="clearSave()">Clear Save</button>
+    </div>
 </body>
 </html>
