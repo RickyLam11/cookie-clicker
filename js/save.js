@@ -2,10 +2,12 @@ function save() {
     if (storageAvailable('localStorage')) {
         let save = {
             cookie: cookie,
+            maxCookie: maxCookie,
             clickPower: clickPower,
             cursor: {
             },
             prestige: prestige,
+            muffin: muffin,
         }
         if (cursorLv1.amount) {
             save.cursor.lv1 = cursorLv1.amount
@@ -35,8 +37,10 @@ function load() {
     let save = JSON.parse(localStorage.getItem("save"));
     if (save) {
         if (typeof save.cookie !== "undefined") cookie = save.cookie
+        if (typeof save.maxCookie !== "undefined") maxCookie = save.maxCookie
         if (typeof save.clickPower !== "undefined") clickPower = save.clickPower
         if (typeof save.prestige !== "undefined") prestige = save.prestige
+        if (typeof save.muffin !== "undefined") muffin = save.muffin
 
         // cursor
         if (save.cursor.lv1) {

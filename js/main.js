@@ -1,7 +1,7 @@
 // main run
 let cookie = 0,
     clickPower = 1,
-    prestige = 0
+    maxCookie = 0
 
 const cursorLv1 = new Cursor(1, 0.6, 4, 1.07, 'cursorLv1', 'cursorLv1Cost', 'cursorLv1MaxBuy')
 const cursorLv2 = new Cursor(60, 3, 60, 1.15, 'cursorLv2', 'cursorLv2Cost', 'cursorLv2MaxBuy')
@@ -15,7 +15,10 @@ updateGui()
 function cookieClick(n) {
     // console.log('cookieClick:' + n)
     cookie = cookie + n
+    maxCookie = Math.max(maxCookie, cookie)
     updateGui("cookie")
+    updateGui("maxCookie")
+    updateGui("prestige")
     updateGui("maxBuy")
 }
 

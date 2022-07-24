@@ -10,6 +10,7 @@ function loadScript(url)
 
 loadScript('./js/support.js')
 loadScript('./js/cursorClass.js')
+loadScript('./js/prestige.js')
 loadScript('./js/gui.js')
 loadScript('./js/save.js')
 loadScript('./js/main.js')

@@ -1,3 +1,6 @@
+v0.3 (2022-07-24)
+Add prestige / muffin
+
 v0.2 (2022-07-20)
 Add 5 / Max Buy Cursors
 

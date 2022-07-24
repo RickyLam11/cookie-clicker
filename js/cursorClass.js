@@ -1,5 +1,6 @@
 class Cursor {
     amount = 0;
+    powerBase;
     power;
     interval;
     costBase;
@@ -8,9 +9,10 @@ class Cursor {
     costTextId;
     maxBuyTextId;
 
-    constructor(power, interval, costBase, costCoefficient, amountTextId, costTextId, maxBuyTextId) {
+    constructor(powerBase, interval, costBase, costCoefficient, amountTextId, costTextId, maxBuyTextId) {
         this.amount = 0
-        this.power = power;
+        this.powerBase = powerBase;
+        this.updatePower()
         this.interval = interval;
         this.costBase = costBase;
         this.costCoefficient = costCoefficient;
@@ -29,6 +31,10 @@ class Cursor {
             	cookieClick(this.amount * this.power);
             }
         }.bind(this), 1000 * this.interval);
+    }
+
+    updatePower() {
+        this.power = Math.floor(this.powerBase * (1 + muffin*0.15));
     }
 
     cursorCost(n) {
@@ -57,10 +63,6 @@ class Cursor {
         this.costTextElement.innerHTML = nextCost;
     }
 
-    buyMaxCursor() {
-    	this.buyCursor(this.getMaxBuy())
-    }
-
     getMaxBuy() {
 		let n = cookie
 		n *= (this.costCoefficient - 1)
@@ -68,6 +70,10 @@ class Cursor {
     	return Math.floor(
     		getBaseLog(this.costCoefficient, n + 1)
     	)
+    }
+
+    buyMaxCursor() {
+    	this.buyCursor(this.getMaxBuy())
     }
 
     updateGui() {
@@ -86,5 +92,10 @@ class Cursor {
     loadAmount(n) {
         this.amount = n
         this.updateGui()
+    }
+
+    prestige() {
+        this.loadAmount(0)
+        this.updatePower()
     }
 }
