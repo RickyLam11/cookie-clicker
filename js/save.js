@@ -45,22 +45,24 @@ function load() {
         // cursor
         if (save.cursor.lv1) {
             cursorLv1.loadAmount(save.cursor.lv1)
+            cursorLv1.updatePower()
         }
         if (save.cursor.lv2) {
             cursorLv2.loadAmount(save.cursor.lv2)
+            cursorLv2.updatePower()
         }
         if (save.cursor.lv3) {
             cursorLv3.loadAmount(save.cursor.lv3)
+            cursorLv3.updatePower()
         }
         if (save.cursor.lv4) {
             cursorLv4.loadAmount(save.cursor.lv4)
+            cursorLv4.updatePower()
         }
         if (save.cursor.lv5) {
             cursorLv5.loadAmount(save.cursor.lv5)
+            cursorLv5.updatePower()
         }
-
-        // update display
-        updateGui()
     }
     else {
         console.log("No save is found")
