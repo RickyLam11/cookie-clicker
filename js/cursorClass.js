@@ -5,11 +5,9 @@ class Cursor {
     interval;
     costBase;
     costCoefficient;
-    amountTextId;
-    costTextId;
-    maxBuyTextId;
+    div;
 
-    constructor(powerBase, interval, costBase, costCoefficient, amountTextId, costTextId, maxBuyTextId) {
+    constructor(powerBase, interval, costBase, costCoefficient, divId) {
         this.amount = 0
         this.powerBase = powerBase;
         this.updatePower()
@@ -17,16 +15,14 @@ class Cursor {
         this.costBase = costBase;
         this.costCoefficient = costCoefficient;
 
-        this.amountTextId = amountTextId;
-        this.amountTextElement = document.getElementById(this.amountTextId);
-        this.costTextId = costTextId;
-        this.costTextElement = document.getElementById(this.costTextId);
-        this.maxBuyTextId = maxBuyTextId;
-        this.maxBuyTextElement = document.getElementById(this.maxBuyTextId);
+        this.div = document.getElementById(divId);
+        this.amountTextElement = this.div.getElementsByClassName('amount')[0];
+        this.rateTextElement = this.div.getElementsByClassName('rate')[0];
+        this.costTextElement = this.div.getElementsByClassName('cost')[0];
+        this.maxBuyTextElement = this.div.getElementsByClassName('maxBuy')[0];
 
         // main game loop
         setInterval(function() {
-            // console.log('Click from :' + this.amountTextId + ' (' + this.amount + ')')
             if (0 < this.amount) {
             	cookieClick(this.amount * this.power);
             }
@@ -34,7 +30,7 @@ class Cursor {
     }
 
     updatePower() {
-        this.power = Math.floor(this.powerBase * (1 + muffin*0.15));
+        this.power = Math.floor(this.powerBase * (1 + muffin * muffinPower));
     }
 
     cursorCost(n) {
@@ -79,6 +75,7 @@ class Cursor {
     updateGui() {
         this.amountTextElement.innerHTML = this.amount;
         this.costTextElement.innerHTML = this.cursorCost(1);
+        this.rateTextElement.innerHTML = '+' + this.power + ' Cookies / ' + this.interval + 's';
     }
 
     updateGuiMaxBuy() {

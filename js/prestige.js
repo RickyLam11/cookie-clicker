@@ -1,5 +1,6 @@
 let prestige = 0,
-	muffin = 0
+	muffin = 0,
+	muffinPower = 0.15
 // maxCookie = 10e7 * muffin^2
 
 function muffinCost(n) {
