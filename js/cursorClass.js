@@ -67,12 +67,11 @@ class Cursor {
         if (cookie >= cost) {
             this.amount = this.amount + n;
             cookie = cookie - cost;
-            this.amountTextElement.innerHTML = this.amount;
             updateGui("cookie");
             updateGui("cookieRate");
         }
         let nextCost = this.cursorCost(1);
-        this.costTextElement.innerHTML = nextCost;
+        updateGui()
     }
 
     getMaxBuy() {
