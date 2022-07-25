@@ -18,6 +18,7 @@ class Cursor {
         this.div = document.getElementById(divId);
         this.amountTextElement = this.div.getElementsByClassName('amount')[0];
         this.rateTextElement = this.div.getElementsByClassName('rate')[0];
+        this.contributionTextElement = this.div.getElementsByClassName('contribution')[0];
         this.costTextElement = this.div.getElementsByClassName('cost')[0];
         this.maxBuyTextElement = this.div.getElementsByClassName('maxBuy')[0];
 
@@ -76,6 +77,7 @@ class Cursor {
         this.amountTextElement.innerHTML = this.amount;
         this.costTextElement.innerHTML = this.cursorCost(1);
         this.rateTextElement.innerHTML = '+' + this.power + ' Cookies / ' + this.interval + 's';
+        this.contributionTextElement.innerHTML = percentageFormat(this.getContribution())
     }
 
     updateGuiMaxBuy() {
@@ -84,6 +86,10 @@ class Cursor {
 
     getCookieRate() {
         return this.amount * (this.power / this.interval)
+    }
+
+    getContribution() {
+        return this.getCookieRate() / getCookieRate()
     }
 
     loadAmount(n) {
