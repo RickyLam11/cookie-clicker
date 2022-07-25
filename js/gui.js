@@ -46,25 +46,29 @@ function updateGui(id = "") {
 }
 
 function updateCookie() {
-    document.getElementById('cookie').innerHTML = cookie
+    document.getElementById('cookie').innerHTML = numberFormat(cookie)
 }
 
 function updateMaxCookie() {
-    document.getElementById('maxCookie').innerHTML = maxCookie
+    document.getElementById('maxCookie').innerHTML = numberFormat(maxCookie)
 }
 
 function updateClickPower() {
-    document.getElementById('clickPower').innerHTML = clickPower
-    document.getElementById('clickPowerCost').innerHTML = clickPowerCost(clickPower)
+    document.getElementById('clickPower').innerHTML = numberFormat(clickPower)
+    document.getElementById('clickPowerCost').innerHTML = numberFormat(clickPowerCost(clickPower))
 }
 
 function updateCookieRate() {
-    document.getElementById('cookieRate').innerHTML = getCookieRate()
+    document.getElementById('cookieRate').innerHTML = numberFormat(getCookieRate())
 }
 
 function updatePrestige() {
-    document.getElementById('prestigeCount').innerHTML = prestige
-    document.getElementById('muffin').innerHTML = muffin
-    document.getElementById('muffinFromPrestige').innerHTML = getMaxMuffinBuy()
-    document.getElementById('cookieForNextMuffin').innerHTML = cookieForNextMuffin()
+    document.getElementById('prestigeCount').innerHTML = numberFormat(prestige)
+    document.getElementById('muffin').innerHTML = numberFormat(muffin)
+    document.getElementById('muffinFromPrestige').innerHTML = numberFormat(getMaxMuffinBuy())
+    document.getElementById('cookieForNextMuffin').innerHTML = numberFormat(cookieForNextMuffin())
+}
+
+function numberFormat(n) {
+    return n.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }

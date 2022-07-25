@@ -4,12 +4,12 @@ let prestige = 0,
 // maxCookie = 10e7 * muffin^2
 
 function muffinCost(n) {
-	return 1e7 * (n * (n + 2))
+	return 1e4 * (n * (n + 2))
 }
 
 function getMaxMuffinBuy() {
 	let n = maxCookie
-	n /= (1e7)
+	n /= (1e4)
 	n += 1
 	n = Math.sqrt(n)
 	n -= 1
