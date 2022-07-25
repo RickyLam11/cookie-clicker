@@ -46,16 +46,16 @@ function updateGui(id = "") {
 }
 
 function updateCookie() {
-    document.getElementById('cookie').innerHTML = numberFormat(cookie)
+    document.getElementById('cookie').innerHTML = integerFormat(cookie)
 }
 
 function updateMaxCookie() {
-    document.getElementById('maxCookie').innerHTML = numberFormat(maxCookie)
+    document.getElementById('maxCookie').innerHTML = integerFormat(maxCookie)
 }
 
 function updateClickPower() {
-    document.getElementById('clickPower').innerHTML = numberFormat(clickPower)
-    document.getElementById('clickPowerCost').innerHTML = numberFormat(clickPowerCost(clickPower))
+    document.getElementById('clickPower').innerHTML = integerFormat(clickPower)
+    document.getElementById('clickPowerCost').innerHTML = integerFormat(clickPowerCost(clickPower))
 }
 
 function updateCookieRate() {
@@ -63,12 +63,28 @@ function updateCookieRate() {
 }
 
 function updatePrestige() {
-    document.getElementById('prestigeCount').innerHTML = numberFormat(prestige)
-    document.getElementById('muffin').innerHTML = numberFormat(muffin)
-    document.getElementById('muffinFromPrestige').innerHTML = numberFormat(getMaxMuffinBuy())
-    document.getElementById('cookieForNextMuffin').innerHTML = numberFormat(cookieForNextMuffin())
+    document.getElementById('prestigeCount').innerHTML = integerFormat(prestige)
+    document.getElementById('muffin').innerHTML = integerFormat(muffin)
+    document.getElementById('muffinFromPrestige').innerHTML = integerFormat(getMaxMuffinBuy())
+    document.getElementById('cookieForNextMuffin').innerHTML = integerFormat(cookieForNextMuffin())
 }
 
-function numberFormat(n) {
-    return n.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+function integerFormat(n) {
+    return numberFormat(n, 'integer');
+}
+
+function numberFormat(n, option="") {
+    switch(option) {
+        case 'integer':
+            digit = 0
+            break;
+        default:
+            digit = 3
+            break;
+    }
+    return n.toFixed(digit).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function percentageFormat(n, digit=3) {
+    return (n * 100).toFixed(digit) + '%';
 }

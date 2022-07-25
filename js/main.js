@@ -39,10 +39,9 @@ function buyClickPower() {
 }
 
 function getCookieRate() {
-    total = cursorLv1.getCookieRate() + 
-            cursorLv2.getCookieRate() +
-            cursorLv3.getCookieRate() +
-            cursorLv4.getCookieRate() +
-            cursorLv5.getCookieRate();
-    return Math.floor(total * 100) / 100;
+    return cursorLv1.getCookieRate() + 
+           cursorLv2.getCookieRate() +
+           cursorLv3.getCookieRate() +
+           cursorLv4.getCookieRate() +
+           cursorLv5.getCookieRate();
 }
