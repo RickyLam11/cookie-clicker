@@ -22,12 +22,25 @@ class Cursor {
         this.costTextElement = this.div.getElementsByClassName('cost')[0];
         this.maxBuyTextElement = this.div.getElementsByClassName('maxBuy')[0];
 
+        this.barElement = this.div.querySelector('.progress .bar');
+
         // main game loop
         setInterval(function() {
             if (0 < this.amount) {
             	cookieClick(this.amount * this.power);
             }
         }.bind(this), 1000 * this.interval);
+
+        // progress bar
+        let width = 0
+        setInterval(function() {
+            width += 1;
+            this.barElement.style.width = width + "%";
+            this.barElement.innerHTML = width + "%";
+            if (100 <= width) {
+                width = 0;
+            }
+        }.bind(this), 1000 * this.interval / 100);
     }
 
     updatePower() {
