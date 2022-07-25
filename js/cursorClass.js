@@ -87,9 +87,9 @@ class Cursor {
     }
 
     updateGui() {
-        this.amountTextElement.innerHTML = this.amount;
-        this.costTextElement.innerHTML = this.cursorCost(1);
-        this.rateTextElement.innerHTML = '+' + this.power + ' Cookies / ' + this.interval + 's';
+        this.amountTextElement.innerHTML = integerFormat(this.amount);
+        this.costTextElement.innerHTML = integerFormat(this.cursorCost(1));
+        this.rateTextElement.innerHTML = '+' + integerFormat(this.power) + ' Cookies / ' + this.interval + 's';
         this.contributionTextElement.innerHTML = percentageFormat(this.getContribution())
     }
 
