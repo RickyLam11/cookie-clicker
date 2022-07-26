@@ -36,11 +36,16 @@ class Cursor {
         setInterval(function() {
             if (0 < this.amount) {
                 width += 1;
-                this.barElement.style.width = width + "%";
-                this.barElement.innerHTML = width + "%";
+                this.barElement.style.width = width + '%';
+                this.barElement.innerHTML = width + '%';
                 if (100 <= width) {
                     width = 0;
                 }
+            }
+            else {
+                width = 0;
+                this.barElement.style.width = '0%';
+                this.barElement.innerHTML = '0%';
             }
         }.bind(this), 1000 * this.interval / 100);
     }
