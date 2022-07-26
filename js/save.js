@@ -39,29 +39,31 @@ function load() {
         if (typeof save.cookie !== "undefined") cookie = save.cookie
         if (typeof save.maxCookie !== "undefined") maxCookie = save.maxCookie
         if (typeof save.clickPower !== "undefined") clickPower = save.clickPower
+        
+        // prestige
         if (typeof save.prestige !== "undefined") prestige = save.prestige
         if (typeof save.muffin !== "undefined") muffin = save.muffin
+        cursorLv1.updatePower()
+        cursorLv2.updatePower()
+        cursorLv3.updatePower()
+        cursorLv4.updatePower()
+        cursorLv5.updatePower()
 
         // cursor
         if (save.cursor.lv1) {
             cursorLv1.loadAmount(save.cursor.lv1)
-            cursorLv1.updatePower()
         }
         if (save.cursor.lv2) {
             cursorLv2.loadAmount(save.cursor.lv2)
-            cursorLv2.updatePower()
         }
         if (save.cursor.lv3) {
             cursorLv3.loadAmount(save.cursor.lv3)
-            cursorLv3.updatePower()
         }
         if (save.cursor.lv4) {
             cursorLv4.loadAmount(save.cursor.lv4)
-            cursorLv4.updatePower()
         }
         if (save.cursor.lv5) {
             cursorLv5.loadAmount(save.cursor.lv5)
-            cursorLv5.updatePower()
         }
     }
     else {
@@ -73,7 +75,7 @@ function load() {
 function showSave() {
     if (storageAvailable('localStorage')) {
         save = JSON.parse(localStorage.getItem("save"))
-        console.log(save)
+        return save
     }
     else {
         console.log("Your browser does not support save")
