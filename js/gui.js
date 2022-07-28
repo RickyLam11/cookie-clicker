@@ -13,15 +13,22 @@ function updateGui(id = "") {
         case 'clickPower':
             updateClickPower()
             break;
-		case 'maxBuy':
+        case 'prestige':
+            updatePrestige()
+        case 'cursor':
+            cursorLv1.updateGui()
+            cursorLv2.updateGui()
+            cursorLv3.updateGui()
+            cursorLv4.updateGui()
+            cursorLv5.updateGui()
+            break;
+        case 'maxBuy':
             cursorLv1.updateGuiMaxBuy()
             cursorLv2.updateGuiMaxBuy()
             cursorLv3.updateGuiMaxBuy()
             cursorLv4.updateGuiMaxBuy()
             cursorLv5.updateGuiMaxBuy()
             break;
-        case 'prestige':
-            updatePrestige()
         default:
             updateCookie()
             updateMaxCookie()
