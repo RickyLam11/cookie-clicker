@@ -103,8 +103,17 @@ class NotifyClass {
         })
     }
 
-    load(offlineEarning) {
-        
+    load(offlineSecond, offlineEarning) {
+        new Notify ({
+            status: 'success',
+            title: 'Load save success',
+            text: 'Time scince last save : ' + secondsToDhms(offlineSecond) +
+                  '<br/>' + 
+                  'Total offline earning: ' + integerFormat(offlineEarning) + ' cookies',
+            showIcon: this.showIcon,
+            gap: this.gap,
+            type: this.type,
+        })
     }
 
 }

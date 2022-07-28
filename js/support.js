@@ -26,3 +26,18 @@ function storageAvailable(type) {
 function getBaseLog(x, y) {
     return Math.log(y) / Math.log(x);
 }
+
+function secondsToDhms(n) {
+    n = Number(n);
+    var d = Math.floor(n / 86400);
+    var h = Math.floor(n % 86400 / 3600);
+    var m = Math.floor(n % 86400 % 3600 / 60);
+    var s = Math.floor(n % 86400 % 3600 % 60);
+
+    displayArray = []
+    d > 0 ? displayArray.push(d + (d == 1 ? " day" : " days")) : null;
+    h > 0 ? displayArray.push(h + (h == 1 ? " hour" : " hours")) : null;
+    m > 0 ? displayArray.push(m + (m == 1 ? " minute" : " minutes")) : null;
+    s > 0 ? displayArray.push(s + (s == 1 ? " second" : " seconds")) : null;
+    return displayArray.join(', ');
+}

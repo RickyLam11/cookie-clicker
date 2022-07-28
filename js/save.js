@@ -1,6 +1,7 @@
 function save(auto = true) {
     if (storageAvailable('localStorage')) {
         let save = {
+            lastSaveTimestamp: Math.floor(Date.now() / 1000),
             cookie: cookie,
             maxCookie: maxCookie,
             clickPower: clickPower,
@@ -65,6 +66,14 @@ function load() {
         if (save.cursor.lv5) {
             cursorLv5.loadAmount(save.cursor.lv5)
         }
+
+        // offline Gain
+        if (typeof save.lastSaveTimestamp !== "undefined") {
+            offlineSecond = (Math.floor(Date.now() / 1000) - save.lastSaveTimestamp)
+            offlineEarning = calculateOfflineEarning(offlineSecond)
+            cookieClick(offlineEarning)
+            notify.load(offlineSecond, offlineEarning)
+        }
     }
     else {
         notify.warning("No save is found")
@@ -86,6 +95,15 @@ function clearSave() {
     notify.clearSave()
 }
 
+function calculateOfflineEarning(offlineSecond) {
+    offlineEarning = 0
+    for (const cursor of [cursorLv1, cursorLv2, cursorLv3, cursorLv4, cursorLv5]) {
+        offlineEarning += cursor.amount * Math.floor(offlineSecond / cursor.interval) * cursor.power
+    }
+    return offlineEarning
+}
+
+// auto save
 setInterval(function() {
     save()
 }.bind(this), 1000 * 60);
