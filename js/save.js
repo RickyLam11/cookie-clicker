@@ -26,11 +26,10 @@ function save(auto = true) {
         }
 
         localStorage.setItem("save", JSON.stringify(save));
-        console.log(localStorage)
         notify.save(auto)
     }
     else {
-        alert("Your browser does not support save")
+        notify.warning("Your browser does not support save")
     }
 }
 
@@ -68,7 +67,7 @@ function load() {
         }
     }
     else {
-        console.log("No save is found")
+        notify.warning("No save is found")
     }
 }
 
@@ -78,7 +77,7 @@ function showSave() {
         return save
     }
     else {
-        console.log("Your browser does not support save")
+        notify.warning("Your browser does not support save")
     }
 }
 

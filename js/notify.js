@@ -6,6 +6,17 @@ class NotifyClass {
     constructor() {
     }
 
+    warning(title) {
+        new Notify ({
+            status: 'warning',
+            title: title,
+            showIcon: this.showIcon,
+            autoclose: true,
+            gap: this.gap,
+            type: this.type,
+        })
+    }
+
     buyClickPower() {
         new Notify ({
             status: 'success',

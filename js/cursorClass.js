@@ -73,7 +73,6 @@ class Cursor {
         if (n <= 0) {return true;}
 
         let cost = this.cursorCost(n);
-        console.log()
         if (cost <= cookie) {
             this.amount = this.amount + n;
             cookie = cookie - cost;
