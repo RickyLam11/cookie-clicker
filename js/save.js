@@ -1,4 +1,4 @@
-function save() {
+function save(auto = true) {
     if (storageAvailable('localStorage')) {
         let save = {
             cookie: cookie,
@@ -27,7 +27,7 @@ function save() {
 
         localStorage.setItem("save", JSON.stringify(save));
         console.log(localStorage)
-        notify.save(false)
+        notify.save(auto)
     }
     else {
         alert("Your browser does not support save")
@@ -70,7 +70,6 @@ function load() {
     else {
         console.log("No save is found")
     }
-
 }
 
 function showSave() {
@@ -85,5 +84,9 @@ function showSave() {
 
 function clearSave() {
     localStorage.removeItem("save")
-    console.log(localStorage)
+    notify.clearSave()
 }
+
+setInterval(function() {
+    save()
+}.bind(this), 1000 * 60);

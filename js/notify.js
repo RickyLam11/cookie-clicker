@@ -70,10 +70,21 @@ class NotifyClass {
         if (auto) {
             title = 'Auto save success'
         }
-        
+
         new Notify ({
             status: 'success',
             title: title,
+            showIcon: this.showIcon,
+            autoclose: true,
+            gap: this.gap,
+            type: this.type,
+        })
+    }
+
+    clearSave() {
+        new Notify ({
+            status: 'success',
+            title: 'Clear save success',
             showIcon: this.showIcon,
             autoclose: true,
             gap: this.gap,
