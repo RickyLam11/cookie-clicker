@@ -27,6 +27,7 @@ function save() {
 
         localStorage.setItem("save", JSON.stringify(save));
         console.log(localStorage)
+        notify.save(false)
     }
     else {
         alert("Your browser does not support save")

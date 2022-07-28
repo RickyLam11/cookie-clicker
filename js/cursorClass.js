@@ -1,4 +1,5 @@
 class Cursor {
+    name;
     amount = 0;
     powerBase;
     power;
@@ -7,7 +8,9 @@ class Cursor {
     costCoefficient;
     div;
 
-    constructor(powerBase, interval, costBase, costCoefficient, divId) {
+    constructor(name, powerBase, interval, costBase, costCoefficient, divId) {
+        this.name = name
+
         this.amount = 0
         this.powerBase = powerBase;
         this.updatePower()
@@ -69,11 +72,14 @@ class Cursor {
     buyCursor(n) {
         let cost = this.cursorCost(n);
         console.log()
-        if (cookie >= cost) {
+        if (cost <= cookie) {
             this.amount = this.amount + n;
             cookie = cookie - cost;
             updateGui("cookie");
             updateGui("cookieRate");
+            notify.buyCursor(n, this.name)
+        } else {
+            notify.buyCursorFail()
         }
         let nextCost = this.cursorCost(1);
         updateGui()

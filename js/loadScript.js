@@ -9,6 +9,8 @@ function loadScript(url)
 }
 
 loadScript('./js/support.js')
+loadScript('./js/notify.js')
+
 loadScript('./js/cursorClass.js')
 loadScript('./js/prestige.js')
 loadScript('./js/gui.js')

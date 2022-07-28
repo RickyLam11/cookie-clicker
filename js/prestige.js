@@ -27,7 +27,7 @@ function buyPrestige() {
 	getMuffin = getMaxMuffinBuy()
 	if (0 < getMuffin) {
 		prestige += 1
-		muffin += getMaxMuffinBuy()
+		muffin += getMuffin
 
 		cookie = 0
     	clickPower = 1
@@ -39,5 +39,8 @@ function buyPrestige() {
         cursorLv5.prestige()
 
         updateGui()
+        notify.buyPrestige(getMuffin)
+	} else {
+		notify.buyPrestigeFail()
 	}
 }

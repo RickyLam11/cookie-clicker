@@ -1,3 +1,6 @@
+v0.4 (2022-07-28)
+Add notifications
+
 v0.3 (2022-07-24)
 Add prestige / muffin
 
