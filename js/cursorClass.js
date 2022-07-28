@@ -70,6 +70,8 @@ class Cursor {
     }
 
     buyCursor(n) {
+        if (n <= 0) {return true;}
+
         let cost = this.cursorCost(n);
         console.log()
         if (cost <= cookie) {
