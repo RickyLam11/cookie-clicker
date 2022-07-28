@@ -44,11 +44,9 @@ function load() {
         // prestige
         if (typeof save.prestige !== "undefined") prestige = save.prestige
         if (typeof save.muffin !== "undefined") muffin = save.muffin
-        cursorLv1.updatePower()
-        cursorLv2.updatePower()
-        cursorLv3.updatePower()
-        cursorLv4.updatePower()
-        cursorLv5.updatePower()
+        for (const cursor of allCursor) {
+            cursor.updatePower()
+        }
 
         // cursor
         if (save.cursor.lv1) {
@@ -97,7 +95,7 @@ function clearSave() {
 
 function calculateOfflineEarning(offlineSecond) {
     offlineEarning = 0
-    for (const cursor of [cursorLv1, cursorLv2, cursorLv3, cursorLv4, cursorLv5]) {
+    for (const cursor of allCursor) {
         offlineEarning += cursor.amount * Math.floor(offlineSecond / cursor.interval) * cursor.power
     }
     return offlineEarning

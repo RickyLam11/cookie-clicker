@@ -9,6 +9,8 @@ const cursorLv3 = new Cursor('Lv3 Cursor', 540, 6, 720, 1.14, 'cursorLv3')
 const cursorLv4 = new Cursor('Lv4 Cursor', 4320, 12, 8640, 1.13, 'cursorLv4')
 const cursorLv5 = new Cursor('Lv5 Cursor', 51840, 24, 103680, 1.12, 'cursorLv5')
 
+const allCursor = [cursorLv1, cursorLv2, cursorLv3, cursorLv4, cursorLv5]
+
 load()
 
 updateGui()
@@ -40,9 +42,9 @@ function buyClickPower() {
 }
 
 function getCookieRate() {
-    return cursorLv1.getCookieRate() + 
-           cursorLv2.getCookieRate() +
-           cursorLv3.getCookieRate() +
-           cursorLv4.getCookieRate() +
-           cursorLv5.getCookieRate();
+    rate = 0
+    for (const cursor of allCursor) {
+        rate += cursor.getCookieRate()
+    }
+    return rate
 }

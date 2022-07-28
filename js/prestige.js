@@ -32,11 +32,9 @@ function buyPrestige() {
 		cookie = 0
     	clickPower = 1
 
-		cursorLv1.prestige()
-        cursorLv2.prestige()
-        cursorLv3.prestige()
-        cursorLv4.prestige()
-        cursorLv5.prestige()
+    	for (const cursor of allCursor) {
+	        cursor.prestige()
+	    }
 
         updateGui()
         notify.buyPrestige(getMuffin)

@@ -16,18 +16,14 @@ function updateGui(id = "") {
         case 'prestige':
             updatePrestige()
         case 'cursor':
-            cursorLv1.updateGui()
-            cursorLv2.updateGui()
-            cursorLv3.updateGui()
-            cursorLv4.updateGui()
-            cursorLv5.updateGui()
+            for (const cursor of allCursor) {
+                cursor.updateGui()
+            }
             break;
         case 'maxBuy':
-            cursorLv1.updateGuiMaxBuy()
-            cursorLv2.updateGuiMaxBuy()
-            cursorLv3.updateGuiMaxBuy()
-            cursorLv4.updateGuiMaxBuy()
-            cursorLv5.updateGuiMaxBuy()
+            for (const cursor of allCursor) {
+                cursor.updateGuiMaxBuy()
+            }
             break;
         default:
             updateCookie()
@@ -36,18 +32,10 @@ function updateGui(id = "") {
             updateClickPower()
             updatePrestige()
 
-            cursorLv1.updateGui()
-            cursorLv2.updateGui()
-            cursorLv3.updateGui()
-            cursorLv4.updateGui()
-            cursorLv5.updateGui()
-            
-            cursorLv1.updateGuiMaxBuy()
-            cursorLv2.updateGuiMaxBuy()
-            cursorLv3.updateGuiMaxBuy()
-            cursorLv4.updateGuiMaxBuy()
-            cursorLv5.updateGuiMaxBuy()
-
+            for (const cursor of allCursor) {
+                cursor.updateGui()
+                cursor.updateGuiMaxBuy()
+            }
     }
     return true
 }
